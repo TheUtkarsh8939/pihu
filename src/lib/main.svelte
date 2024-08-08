@@ -4,6 +4,7 @@
   import { initializeApp } from "firebase/app";
   import { config, aiName } from "./config";
   import { scrollSmoothlyToBottom } from "./utility";
+  import { push } from 'svelte-spa-router';
   import {
     getFirestore,
     onSnapshot,
@@ -38,9 +39,9 @@
   let theme: string;
   let userDataJson = localStorage.getItem("userData");
   let hidden = false
-  userDataJson ||= "{}";
-  if (userDataJson == "") {
-    window.location.href = "/#/login?";
+  userDataJson ||= `{"name":"Not logged in", "team":"nil"}`;
+  if (userDataJson == `{"name":"Not logged in", "team":"nil"}`) {
+    push("/login")
   }
   const userData: userData = JSON.parse(userDataJson);
   const q = query(collection(fs, userData.team));
