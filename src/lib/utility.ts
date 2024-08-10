@@ -1,4 +1,4 @@
-export const scrollSmoothlyToBottom = (id: string,durationInMs: number) => {
-    const element: HTMLElement|null = document.getElementById(`${id}`);
-    //@ts-ignore
+export const getCurrentDate = () => {
+    const date = new Date()
+    return `${date.getDate()} ${date.getMonth()} ${date.getFullYear()}`
 }

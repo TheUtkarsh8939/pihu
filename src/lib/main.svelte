@@ -3,7 +3,7 @@
   import SendFirstMessage from "./components/NoMessages.svelte";
   import { initializeApp } from "firebase/app";
   import { config, aiName } from "./config";
-  import { scrollSmoothlyToBottom } from "./utility";
+  import { getCurrentDate } from "./utility";
   import { push } from 'svelte-spa-router';
   import {
     getFirestore,
@@ -145,6 +145,7 @@
     const docData = {
       sender: username,
       text: message,
+      date: getCurrentDate()
     };
     console.log(messages.length);
     const docRef = doc(fs, userData.team, (messages.length + 1).toString());
@@ -166,6 +167,7 @@
       const docData = {
         sender: "Pihu ",
         text: ai,
+        date: getCurrentDate()
       };
       console.log(messages.length);
       const docRef = doc(fs, userData.team, (messages.length + 1).toString());
@@ -214,3 +216,21 @@
     </div>
   </div>
 </main>
+<style>
+  /* width */
+#msgBox::-webkit-scrollbar {
+  
+  width: 1.5px;
+}
+
+/* Track */
+#msgBox::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+#msgBox::-webkit-scrollbar-thumb {
+  
+  background: linear-gradient(#7405fc,#f005fc);
+}
+</style>
