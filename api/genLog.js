@@ -26,7 +26,7 @@ export const config = {
 };
 export const getCurrentDate = () => {
   const date = new Date();
-  return `${date.getDate()} ${date.getMonth() + 1} ${date.getFullYear()}`;
+  return `${date.getDate() - 1} ${date.getMonth() + 1} ${date.getFullYear()}`;
 };
 const app = initializeApp(config);
 const fs = getFirestore(app);
